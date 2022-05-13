@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_notes">
+
+    <fragment
+        android:id="@+id/nav_notes"
+        android:name="com.example.mynote.ui.notes.HomeFragment"
+        android:label="Notes"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_notes_to_insertScreen2"
+            app:destination="@id/insertScreen2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_nav_notes_to_update"
+            app:destination="@id/update"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_archived"
+        android:name="com.example.mynote.ui.archived.Archived"
+        android:label="Archived"
+        tools:layout="@layout/archived_fragment" >
+        <action
+            android:id="@+id/action_nav_archived_to_update"
+            app:destination="@id/update" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_starredNotes"
+        android:name="com.example.mynote.ui.starredNotes.StarredNotes"
+        android:label="Starred notes"
+        tools:layout="@layout/starred_notes_fragment" >
+        <action
+            android:id="@+id/action_nav_starredNotes_to_update"
+            app:destination="@id/update" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_trash"
+        android:name="com.example.mynote.ui.trash.Trash"
+        android:label="Trash"
+        tools:layout="@layout/trash_fragment" />
+    <fragment
+        android:id="@+id/insertScreen2"
+        android:name="com.example.mynote.ui.insert.InsertScreen"
+        android:label="Add note"
+        tools:layout="@layout/fragment_insert_screen">
+        <action
+            android:id="@+id/action_insertScreen2_to_nav_notes"
+            app:destination="@id/nav_notes" />
+        <argument
+            android:name="type"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/update"
+        android:name="com.example.mynote.ui.update.Update"
+        android:label="Update"
+        tools:layout="@layout/fragment_update">
+        <action
+            android:id="@+id/action_update_to_nav_notes"
+            app:destination="@id/nav_notes" />
+        <argument
+            android:name="note"
+            app:argType="com.example.mynote.model.Note" />
+        <action
+            android:id="@+id/action_update_to_nav_starredNotes"
+            app:destination="@id/nav_starredNotes" />
+        <action
+            android:id="@+id/action_update_to_nav_archived"
+            app:destination="@id/nav_archived" />
+    </fragment>
+
+
+</navigation>
